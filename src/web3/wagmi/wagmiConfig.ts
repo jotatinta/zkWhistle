@@ -1,26 +1,24 @@
 import {createConfig, configureChains} from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
-import { goerli, mainnet, polygon } from '@wagmi/core/chains'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { polygon, polygonMumbai } from '@wagmi/core/chains'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import config from "../../config";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [goerli, mainnet, polygon],
+export const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [polygon, polygonMumbai],
   [publicProvider()],
 )
 
-console.log('### config.walletConnect.projectId', config.walletConnect.projectId);
-
-export const walletConnectConnector = new WalletConnectConnector({
+export const metaMaskConnector = new MetaMaskConnector({
   chains: chains,
   options: {
-    projectId: config.walletConnect.projectId,
+    shimDisconnect: false,
   },
 })
 
 export const wagmiConfig = createConfig({
   autoConnect: true,
-  connectors: [walletConnectConnector],
+  connectors: [metaMaskConnector],
   publicClient,
   webSocketPublicClient,
 })

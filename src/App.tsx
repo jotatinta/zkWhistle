@@ -1,23 +1,23 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import logo from './logo.svg';
-import './App.scss';
-import Organization from './routes/organization/Organization';
-import Header from './components/header/Header';
-import Claim from './routes/claim/Claim';
-
-
+import "./App.scss";
+import Organization from "./routes/organization/Organization";
+import Header from "./components/header/Header";
+import Claim from "./routes/claim/Claim";
+import { WagmiConfigProvider } from "./web3/wagmi/WagmiConfigProvider";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Organization />} />
-        <Route path='/claim' element={<Claim />} />
-      </Routes>
-    </div>
+    <>
+      <WagmiConfigProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Organization />} />
+          <Route path="/claim" element={<Claim />} />
+        </Routes>
+      </WagmiConfigProvider>
+    </>
   );
 }
 

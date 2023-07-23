@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import React from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import Dropzone from "react-dropzone";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -7,7 +7,7 @@ import { validateOrg } from "../../api/api";
 import { Org } from "../../types";
 
 import "./Organization.styles.scss";
-import { sleep } from "../../utils/sleep";
+import { sleep } from "../../utils/utils";
 
 const Organization = () => {
   const [orgId, setOrgId] = useState("");
@@ -15,6 +15,7 @@ const Organization = () => {
   const [isValid, setIsValid] = useState(false);
   const [fileName, setFileName] = useState("");
   const [org, setOrg] = useState<Org>();
+  const [success, setSuccess] = useState(false);
 
   const formSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,8 +37,8 @@ const Organization = () => {
   const processFile = async (e: MouseEvent<HTMLButtonElement>) => {
     setIsProcessing(true);
     await sleep(4000);
-    setFileName('')
-    setIsProcessing(false)
+    setFileName("");
+    setSuccess(true);
   };
 
   const fileDrop = (file: any[]) => {
@@ -73,6 +74,7 @@ const Organization = () => {
                 required
                 onChange={onChange}
                 placeholder="Organization Email Domain (@domain.com)"
+                disabled={isProcessing}
               ></input>
 
               <div className="upload-area">
@@ -98,12 +100,16 @@ const Organization = () => {
                   </Dropzone>
                 )}
               </div>
-              {!isProcessing ? (
+              {isProcessing ? (
+                !success ? (
+                  <CircularProgress />
+                ) : (
+                  <h3>Employee database updated!</h3>
+                )
+              ) : (
                 <button type="button" onClick={processFile}>
                   Submit
                 </button>
-              ) : (
-                <CircularProgress />
               )}
             </form>
           </>

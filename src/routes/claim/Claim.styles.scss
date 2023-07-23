@@ -1,0 +1,46 @@
+@import "../../assets/scss/styles.scss";
+
+.claim-container {
+  padding-top: 2em;
+
+  .user-welcome {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 30em;
+    gap: 1em;
+  }
+
+  form {
+    max-width: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .radio-complaint-mode {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    padding: 0.8em 1.5em 0.8em;
+    border-radius: 15px;
+    border: solid 1px $text-color;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.8em 1.5em 0.8em;
+    border-radius: 15px;
+    border: solid 1px $text-color;
+  }
+
+  button {
+    padding: 0.5em 1em 0.5em;
+    border-radius: 15px;
+    border: 0.5px solid $text-color;
+  }
+  
+}

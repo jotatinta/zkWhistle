@@ -1,0 +1,15 @@
+.wallet-container {
+  padding-top: 1em;
+  padding-right: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  button {
+    padding: 0.5em 1em 0.5em;
+    border-radius: 15px;
+    width: 10em;
+  }
+}
