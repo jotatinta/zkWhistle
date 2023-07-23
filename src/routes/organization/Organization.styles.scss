@@ -1,0 +1,54 @@
+@import "../../assets/scss/styles.scss";
+
+.org-container {
+  padding-top: 2em;
+  form {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30em;
+    gap: 2em;
+  }
+  input {
+    width: 20em;
+    padding: 0.8em 1.5em 0.8em;
+    border-radius: 15px;
+    border: solid 1px $text-color;
+  }
+
+  button {
+    padding: 0.5em 1em 0.5em;
+    border-radius: 15px;
+    border: 0.5px solid $text-color;
+  }
+
+  .org-welcome {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 30em;
+    gap: 1em
+  }
+
+  .upload-area {
+    height: 7em;
+    width: 15em;
+    border-radius: 15px;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-gray;
+    text-align: center;
+
+    input {
+      width: 5em;
+      padding: 1em;
+      // padding: 0.8em 1.5em 0.8em;
+      // border-radius: 15px;
+      // border: solid 1px $text-color;
+    }
+  }
+}
